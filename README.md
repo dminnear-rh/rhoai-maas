@@ -4,4 +4,4 @@ This pattern is an implementation of [the Models-as-a-Service docs](https://docs
 
 ## Needs to be fixed
 
-1. The `kuadrant-operator-controller-manager-*` needs to be deleted in order for the Kuadrant resource to be marked as Ready
+1. The `kuadrant-operator-controller-manager-*` in `openshift-operators` needs to be deleted in order for the Kuadrant resource to be marked as Ready
