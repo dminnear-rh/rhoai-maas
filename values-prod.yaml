@@ -27,3 +27,7 @@ clusterGroup:
       name: kuadrant
       namespace: rhoai-maas
       path: charts/kuadrant
+    odh-dashboard:
+      name: odh-dashboard
+      namespace: rhoai-maas
+      path: charts/odh-dashboard
