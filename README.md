@@ -4,3 +4,17 @@ This pattern is an implementation of [the Models-as-a-Service docs](https://docs
 
 There looks to be a similar implementation in [Introducing Models-as-a-Service in OpenShift AI](https://developers.redhat.com/articles/2025/11/25/introducing-models-service-openshift-ai#what_is_models_as_a_service__maas__),
 which is also used as a reference.
+
+## Installation of this pattern
+
+1. Fork/clone this repo
+2. Log into an OpenShift Cluster of version `4.19.9` or later
+3. `cd` into the directory you cloned this repo into
+4. Run `./pattern.sh make install`
+5. Once everything comes online, delete `kuadrant-operator-controller-manager` pod in `kuadrant-system` as per notes below for `Kuadrant` resource to become ready.
+
+
+## Notes
+
+1. The `kuadrant-operator-controller-manager` pod in `kuadrant-system` MUST be deleted for the `Kuadrant` CR to achieve Ready status...
+2. The `maas-api` pod in `redhat-ods-applications` DOES NOT have the label `app=maas-api`. Even after manually patching this label, the MaaS dashboard entry does not show up.
