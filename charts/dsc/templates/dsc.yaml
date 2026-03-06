@@ -27,7 +27,8 @@ spec:
     workbenches:
       workbenchNamespace: rhods-notebooks
     mlflowoperator: {}
-    dashboard: {}
+    dashboard:
+      managementState: Managed
     trainer: {}
     llamastackoperator: {}
     trainingoperator: {}
