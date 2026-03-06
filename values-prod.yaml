@@ -12,6 +12,7 @@ clusterGroup:
     connectivity-link:
       name: rhcl-operator
       namespace: kuadrant-system
+      channel: stable
       csv: v1.2.1
     rhoai:
       name: rhods-operator
