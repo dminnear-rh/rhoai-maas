@@ -1,0 +1,29 @@
+clusterGroup:
+  name: prod
+  namespaces:
+    - rhoai-maas
+    - redhat-ods-operator:
+        operatorGroup: true
+        targetNamespaces: []
+    - kuadrant-system
+  subscriptions:
+    connectivity-link:
+      name: rhcl-operator
+      namespace: ""
+    rhoai:
+      name: rhods-operator
+      namespace: redhat-ods-operator
+      channel: stable-3.x
+  applications:
+    dsc:
+      name: dsc
+      namespace: rhoai-maas
+      path: charts/dsc
+    gateway:
+      name: gateway
+      namespace: rhoai-maas
+      path: charts/gateway
+    kuadrant:
+      name: kuadrant
+      namespace: rhoai-maas
+      path: charts/kuadrant
