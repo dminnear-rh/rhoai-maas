@@ -13,7 +13,7 @@ clusterGroup:
       name: rhcl-operator
       namespace: kuadrant-system
       channel: stable
-      csv: v1.2.1
+      csv: rhcl-operator.v1.2.1
     rhoai:
       name: rhods-operator
       namespace: redhat-ods-operator
