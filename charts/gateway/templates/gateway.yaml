@@ -4,7 +4,7 @@ metadata:
   name: maas-default-gateway
   namespace: openshift-ingress
 spec:
-  gatewayClassName: data-science-gateway-class
+  gatewayClassName: openshift-gateway-controller
   listeners:
     - allowedRoutes:
         namespaces:
@@ -12,3 +12,6 @@ spec:
       name: http
       port: 80
       protocol: HTTP
+  infrastructure:
+    labels:
+      serving.kserve.io/gateway: kserve-ingress-gateway

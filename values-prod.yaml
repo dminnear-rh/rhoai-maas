@@ -5,11 +5,13 @@ clusterGroup:
     - redhat-ods-operator:
         operatorGroup: true
         targetNamespaces: []
-    - kuadrant-system
+    - kuadrant-system:
+        operatorGroup: true
+        targetNamespaces: []
   subscriptions:
     connectivity-link:
       name: rhcl-operator
-      namespace: ""
+      namespace: kuadrant-system
     rhoai:
       name: rhods-operator
       namespace: redhat-ods-operator

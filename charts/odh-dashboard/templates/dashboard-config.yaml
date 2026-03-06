@@ -8,6 +8,7 @@ spec:
   dashboardConfig:
     disableTracking: false
     modelAsService: true
+    genAiStudio: true
   hardwareProfileOrder: []
   notebookController:
     enabled: true

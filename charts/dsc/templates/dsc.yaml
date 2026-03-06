@@ -10,7 +10,7 @@ spec:
         managementState: Managed
       nim:
         managementState: Managed
-      rawDeploymentServiceConfig: Headless
+      rawDeploymentServiceConfig: Headed
     modelregistry:
       registriesNamespace: rhoai-model-registries
     feastoperator: {}
