@@ -38,3 +38,7 @@ clusterGroup:
       name: odh-dashboard
       namespace: rhoai-maas
       path: charts/odh-dashboard
+    lws:
+      name: lws
+      namespace: openshift-lws-operator
+      path: charts/lws
