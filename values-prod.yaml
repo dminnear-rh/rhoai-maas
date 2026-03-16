@@ -8,6 +8,7 @@ clusterGroup:
     - kuadrant-system:
         operatorGroup: true
         targetNamespaces: []
+    - openshift-lws-operator
   subscriptions:
     connectivity-link:
       name: rhcl-operator
@@ -16,6 +17,10 @@ clusterGroup:
       name: rhods-operator
       namespace: redhat-ods-operator
       channel: stable-3.x
+    lws:
+      name: leader-worker-set
+      namespace: openshift-lws-operator
+      channel: stable-v1.0
   applications:
     dsc:
       name: dsc

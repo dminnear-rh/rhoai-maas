@@ -17,4 +17,3 @@ which is also used as a reference.
 ## Notes
 
 1. The `kuadrant-operator-controller-manager` pod in `kuadrant-system` MUST be deleted for the `Kuadrant` CR to achieve Ready status...
-2. The `maas-api` pod in `redhat-ods-applications` DOES NOT have the label `app=maas-api`. Even after manually patching this label, the MaaS dashboard entry does not show up.
