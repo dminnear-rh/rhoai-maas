@@ -30,5 +30,6 @@ spec:
     dashboard:
       managementState: Managed
     trainer: {}
-    llamastackoperator: {}
+    llamastackoperator:
+      managementState: Managed
     trainingoperator: {}
