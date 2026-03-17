@@ -25,6 +25,12 @@ spec:
     containers:
     - name: main
       image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
+      env:
+        - name: VLLM_CPU_KVCACHE_SPACE
+          value: "8"
+      args:
+        - --max-model-len
+        - "16384"
       resources:
         limits:
           cpu: "4"
