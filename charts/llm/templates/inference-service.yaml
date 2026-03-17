@@ -35,11 +35,12 @@ spec:
       args:
         - /mnt/models
         - --max-model-len
-        - "16384"
+        - "4096"
         - --ssl-keyfile
         - /var/run/kserve/tls/tls.key
         - --ssl-certfile
         - /var/run/kserve/tls/tls.crt
+        - --enforce-eager
       readinessProbe:
         httpGet:
           path: /health
