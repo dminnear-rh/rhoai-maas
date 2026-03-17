@@ -28,7 +28,7 @@ spec:
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
           value: "8"
-      cmd:
+      command:
         - vllm
         - serve
       args:
