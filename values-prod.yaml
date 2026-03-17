@@ -1,16 +1,26 @@
 clusterGroup:
   name: prod
+
   namespaces:
-    - rhoai-maas
+    - rhoai-maas:
+    - cert-manager-operator:
+    - openshift-lws-operator:
     - redhat-ods-operator:
         operatorGroup: true
         targetNamespaces: []
     - kuadrant-system:
         operatorGroup: true
         targetNamespaces: []
-    - openshift-lws-operator
-    - cert-manager-operator
+
   subscriptions:
+    cert-manager:
+      name: openshift-cert-manager-operator
+      namespace: cert-manager-operator
+      channel: stable-v1
+    lws:
+      name: leader-worker-set
+      namespace: openshift-lws-operator
+      channel: stable-v1.0
     connectivity-link:
       name: rhcl-operator
       namespace: kuadrant-system
@@ -18,14 +28,7 @@ clusterGroup:
       name: rhods-operator
       namespace: redhat-ods-operator
       channel: stable-3.x
-    lws:
-      name: leader-worker-set
-      namespace: openshift-lws-operator
-      channel: stable-v1.0
-    cert-manager:
-      name: openshift-cert-manager-operator
-      namespace: cert-manager-operator
-      channel: stable-v1
+
   applications:
     dsc:
       name: dsc
@@ -47,3 +50,7 @@ clusterGroup:
       name: lws
       namespace: openshift-lws-operator
       path: charts/lws
+    llm:
+      name: llm
+      namespace: rhoai-maas
+      path: charts/llm

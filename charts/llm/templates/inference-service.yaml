@@ -1,0 +1,33 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: LLMInferenceService
+metadata:
+  annotations:
+    alpha.maas.opendatahub.io/tiers: '[]'
+    opendatahub.io/model-type: generative
+    openshift.io/display-name: granite-4-micro
+  name: granite-4-micro
+  namespace: rhoai-maas
+  labels:
+    opendatahub.io/dashboard: 'true'
+spec:
+  model:
+    name: granite-4-micro
+    uri: hf://ibm-granite/granite-4.0-micro
+  replicas: 1
+  router:
+    gateway:
+      refs:
+        - name: maas-default-gateway
+          namespace: openshift-ingress
+    route: {}
+    scheduler: {}
+    template:
+      containers:
+      - name: main
+        resources:
+          limits:
+            cpu: "4"
+            memory: 16Gi
+          requests:
+            cpu: "4"
+            memory: 16Gi
