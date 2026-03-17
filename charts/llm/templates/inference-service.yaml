@@ -9,6 +9,7 @@ metadata:
   namespace: rhoai-maas
   labels:
     opendatahub.io/dashboard: 'true'
+    opendatahub.io/genai-asset: 'true'
 spec:
   model:
     name: granite-4-micro
