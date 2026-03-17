@@ -4,16 +4,16 @@ metadata:
   annotations:
     alpha.maas.opendatahub.io/tiers: '[]'
     opendatahub.io/model-type: generative
-    openshift.io/display-name: granite-4-nano
-  name: granite-4-nano
+    openshift.io/display-name: qwen-cpu
+  name: qwen-cpu
   namespace: rhoai-maas
   labels:
     opendatahub.io/dashboard: 'true'
     opendatahub.io/genai-asset: 'true'
 spec:
   model:
-    name: granite-4-nano
-    uri: hf://ibm-granite/granite-4.0-350m
+    name: qwen-cpu
+    uri: hf://Qwen/Qwen2.5-1.5B-Instruct
   replicas: 1
   router:
     gateway:
