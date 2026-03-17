@@ -29,6 +29,8 @@ spec:
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
           value: "6"
+        - name: VLLM_USE_V1
+          value: "0"
       command:
         - vllm
         - serve
