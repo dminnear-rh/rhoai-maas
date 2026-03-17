@@ -4,16 +4,16 @@ metadata:
   annotations:
     alpha.maas.opendatahub.io/tiers: '[]'
     opendatahub.io/model-type: generative
-    openshift.io/display-name: granite-4-micro
-  name: granite-4-micro
+    openshift.io/display-name: granite-4-nano
+  name: granite-4-nano
   namespace: rhoai-maas
   labels:
     opendatahub.io/dashboard: 'true'
     opendatahub.io/genai-asset: 'true'
 spec:
   model:
-    name: granite-4-micro
-    uri: hf://ibm-granite/granite-4.0-micro
+    name: granite-4-nano
+    uri: hf://ibm-granite/granite-4.0-350m
   replicas: 1
   router:
     gateway:
@@ -37,7 +37,7 @@ spec:
       args:
         - /mnt/models
         - --max-model-len
-        - "4096"
+        - "8192"
         - --ssl-keyfile
         - /var/run/kserve/tls/tls.key
         - --ssl-certfile
