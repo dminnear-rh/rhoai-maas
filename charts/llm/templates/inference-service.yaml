@@ -32,14 +32,29 @@ spec:
         - vllm
         - serve
       args:
+        - /mnt/models
         - --max-model-len
         - "16384"
-        - --model
-        - /mnt/models
         - --ssl-keyfile
         - /var/run/kserve/tls/tls.key
         - --ssl-certfile
         - /var/run/kserve/tls/tls.crt
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: 8000
+          scheme: HTTPS
+        initialDelaySeconds: 90
+        periodSeconds: 10
+        failureThreshold: 18
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 8000
+          scheme: HTTPS
+        initialDelaySeconds: 180
+        periodSeconds: 30
+        timeoutSeconds: 20
       resources:
         limits:
           cpu: "4"
