@@ -2,13 +2,13 @@ clusterGroup:
   name: prod
 
   namespaces:
-    - rhoai-maas:
-    - cert-manager-operator:
-    - openshift-lws-operator:
-    - redhat-ods-operator:
+    rhoai-maas:
+    cert-manager-operator:
+    openshift-lws-operator:
+    redhat-ods-operator:
         operatorGroup: true
         targetNamespaces: []
-    - kuadrant-system:
+    kuadrant-system:
         operatorGroup: true
         targetNamespaces: []
 
