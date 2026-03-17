@@ -24,6 +24,7 @@ spec:
     template:
       containers:
       - name: main
+        image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
         resources:
           limits:
             cpu: "4"
