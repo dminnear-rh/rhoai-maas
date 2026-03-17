@@ -29,8 +29,6 @@ spec:
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
           value: "6"
-        - name: VLLM_USE_V1
-          value: "0"
       command:
         - vllm
         - serve
@@ -42,7 +40,6 @@ spec:
         - /var/run/kserve/tls/tls.key
         - --ssl-certfile
         - /var/run/kserve/tls/tls.crt
-        - --enforce-eager
       readinessProbe:
         httpGet:
           path: /health
