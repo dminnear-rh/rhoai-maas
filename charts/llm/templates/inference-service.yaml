@@ -27,7 +27,7 @@ spec:
       image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
-          value: "8"
+          value: "6"
       command:
         - vllm
         - serve
