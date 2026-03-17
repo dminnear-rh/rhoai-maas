@@ -34,6 +34,12 @@ spec:
       args:
         - --max-model-len
         - "16384"
+        - --model
+        - /mnt/models
+        - --ssl-keyfile
+        - /var/run/kserve/tls/tls.key
+        - --ssl-certfile
+        - /var/run/kserve/tls/tls.crt
       resources:
         limits:
           cpu: "4"
