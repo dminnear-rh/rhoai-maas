@@ -28,8 +28,11 @@ spec:
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
           value: "8"
+      cmd:
+        - vllm
+        - serve
       args:
-        - "--max-model-len"
+        - --max-model-len
         - "16384"
       resources:
         limits:
