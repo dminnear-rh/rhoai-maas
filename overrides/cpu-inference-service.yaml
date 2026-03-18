@@ -1,0 +1,58 @@
+name: granite-4-cpu
+model: ibm-granite/granite-4.0-1b
+
+auth:
+  enabled: false
+
+runtimeContainer:
+  image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
+
+  env:
+    - name: VLLM_CPU_KVCACHE_SPACE
+      value: "4"
+    - name: ONEDNN_MAX_CPU_ISA
+      value: "AVX512_CORE"
+
+  command:
+    - vllm
+    - serve
+
+  args:
+    - /mnt/models
+    - --max-model-len
+    - "4096"
+    - --ssl-keyfile
+    - /var/run/kserve/tls/tls.key
+    - --ssl-certfile
+    - /var/run/kserve/tls/tls.crt
+    - --dtype
+    - float32
+    - --kv-cache-dtype
+    - auto
+    - --enforce-eager
+
+  readinessProbe:
+    httpGet:
+      path: /health
+      port: 8000
+      scheme: HTTPS
+    initialDelaySeconds: 90
+    periodSeconds: 10
+    failureThreshold: 18
+
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 8000
+      scheme: HTTPS
+    initialDelaySeconds: 180
+    periodSeconds: 30
+    timeoutSeconds: 20
+
+  resources:
+    limits:
+      cpu: "8"
+      memory: 24Gi
+    requests:
+      cpu: "8"
+      memory: 24Gi

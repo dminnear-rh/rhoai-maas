@@ -5,6 +5,7 @@ metadata:
     alpha.maas.opendatahub.io/tiers: '[]'
     opendatahub.io/model-type: generative
     openshift.io/display-name: {{ .Values.name }}
+    security.opendatahub.io/enable-auth: {{ .Values.auth.enabled | quote }}
   name: {{ .Values.name }}
   labels:
     opendatahub.io/dashboard: 'true'
@@ -24,48 +25,30 @@ spec:
   template:
     containers:
     - name: main
-      image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
+      {{- with .Values.runtimeContainer.image }}
+      image: {{ . }}
+      {{- end }}
+      {{- with .Values.runtimeContainer.env }}
       env:
-        - name: VLLM_CPU_KVCACHE_SPACE
-          value: "4"
-        - name: ONEDNN_MAX_CPU_ISA
-          value: "AVX512_CORE"
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.runtimeContainer.command }}
       command:
-        - vllm
-        - serve
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.runtimeContainer.args }}
       args:
-        - /mnt/models
-        - --max-model-len
-        - "4096"
-        - --ssl-keyfile
-        - /var/run/kserve/tls/tls.key
-        - --ssl-certfile
-        - /var/run/kserve/tls/tls.crt
-        - --dtype
-        - float32
-        - --kv-cache-dtype
-        - auto
-        - --enforce-eager
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.runtimeContainer.readinessProbe }}
       readinessProbe:
-        httpGet:
-          path: /health
-          port: 8000
-          scheme: HTTPS
-        initialDelaySeconds: 90
-        periodSeconds: 10
-        failureThreshold: 18
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.runtimeContainer.livenessProbe }}
       livenessProbe:
-        httpGet:
-          path: /health
-          port: 8000
-          scheme: HTTPS
-        initialDelaySeconds: 180
-        periodSeconds: 30
-        timeoutSeconds: 20
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.runtimeContainer.resources }}
       resources:
-        limits:
-          cpu: "8"
-          memory: 24Gi
-        requests:
-          cpu: "8"
-          memory: 24Gi
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

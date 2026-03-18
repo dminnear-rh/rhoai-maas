@@ -50,7 +50,9 @@ clusterGroup:
       name: lws
       namespace: openshift-lws-operator
       path: charts/lws
-    llm:
-      name: llm
+    cpu-inference-service:
+      name: cpu-inference-service
       namespace: rhoai-maas
       path: charts/llm
+      extraValuesFiles:
+        - overrides/cpu-inference-service.yaml

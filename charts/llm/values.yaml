@@ -1,2 +1,14 @@
-name: granite-4-cpu
+name: llm-inference-service
 model: ibm-granite/granite-4.0-1b
+
+auth:
+  enabled: true
+
+runtimeContainer:
+  image: ""
+  env: {}
+  command: {}
+  args: {}
+  readinessProbe: {}
+  livenessProbe: {}
+  resources: {}
