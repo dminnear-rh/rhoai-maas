@@ -56,4 +56,4 @@ clusterGroup:
       namespace: rhoai-maas
       path: charts/llm
       extraValueFiles:
-        - $patternref/overrides/cpu-inference-service.yaml
+        - /overrides/cpu-inference-service.yaml
