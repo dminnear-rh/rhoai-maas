@@ -4,16 +4,15 @@ metadata:
   annotations:
     alpha.maas.opendatahub.io/tiers: '[]'
     opendatahub.io/model-type: generative
-    openshift.io/display-name: qwen-cpu
-  name: qwen-cpu
-  namespace: rhoai-maas
+    openshift.io/display-name: {{ .Values.name }}
+  name: {{ .Values.name }}
   labels:
     opendatahub.io/dashboard: 'true'
     opendatahub.io/genai-asset: 'true'
 spec:
   model:
-    name: qwen-cpu
-    uri: hf://Qwen/Qwen2.5-1.5B-Instruct
+    name: {{ .Values.name }}
+    uri: {{ printf "hf://%s" .Values.model }}
   replicas: 1
   router:
     gateway:
@@ -28,7 +27,7 @@ spec:
       image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
-          value: "6"
+          value: "4"
         - name: ONEDNN_MAX_CPU_ISA
           value: "AVX512_CORE"
       command:
@@ -37,13 +36,13 @@ spec:
       args:
         - /mnt/models
         - --max-model-len
-        - "8192"
+        - "4096"
         - --ssl-keyfile
         - /var/run/kserve/tls/tls.key
         - --ssl-certfile
         - /var/run/kserve/tls/tls.crt
         - --dtype
-        - float16
+        - float32
         - --kv-cache-dtype
         - auto
         - --enforce-eager
@@ -65,8 +64,8 @@ spec:
         timeoutSeconds: 20
       resources:
         limits:
-          cpu: "4"
+          cpu: "8"
           memory: 24Gi
         requests:
-          cpu: "4"
+          cpu: "8"
           memory: 24Gi

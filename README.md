@@ -22,11 +22,14 @@ which is also used as a reference.
 
 ```bash
 MODEL_ADDRESS=$(oc get gateway -n openshift-ingress maas-default-gateway -o jsonpath='{.status.addresses[0].value}')
-MAAS_ENDPOINT="http://$MODEL_ADDRESS/rhoai-maas/qwen-cpu"
+MAAS_ENDPOINT="http://$MODEL_ADDRESS/rhoai-maas/granite-4-cpu"
 COMPLETIONS_ENDPOINT="$MAAS_ENDPOINT/v1/chat/completions"
 
 curl -X POST "$COMPLETIONS_ENDPOINT" \
   -H "Authorization: Bearer $(oc whoami -t)" \
   -H "Content-Type: application/json" \
-  -d '{"messages": [{"role": "user", "content": "Hi"}]}'
+  -d '{
+    "messages": [{"role": "user", "content": "Hi"}],
+    "max_tokens": "10"
+  }'
 ```
