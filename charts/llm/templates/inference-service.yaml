@@ -45,7 +45,7 @@ spec:
         - --dtype
         - float16
         - --kv-cache-dtype
-        - fp16
+        - auto
         - --enforce-eager
       readinessProbe:
         httpGet:
