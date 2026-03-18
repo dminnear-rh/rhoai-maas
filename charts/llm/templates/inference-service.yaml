@@ -29,6 +29,8 @@ spec:
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
           value: "6"
+        - name: ONEDNN_MAX_CPU_ISA
+          value: "AVX512_CORE"
       command:
         - vllm
         - serve
@@ -40,6 +42,11 @@ spec:
         - /var/run/kserve/tls/tls.key
         - --ssl-certfile
         - /var/run/kserve/tls/tls.crt
+        - --dtype
+        - float16
+        - --kv-cache-dtype
+        - fp16
+        - --enforce-eager
       readinessProbe:
         httpGet:
           path: /health
@@ -59,7 +66,7 @@ spec:
       resources:
         limits:
           cpu: "4"
-          memory: 16Gi
+          memory: 24Gi
         requests:
           cpu: "4"
-          memory: 16Gi
+          memory: 24Gi
