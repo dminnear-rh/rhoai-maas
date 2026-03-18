@@ -4,7 +4,7 @@ metadata:
   name: maas-default-gateway
   namespace: openshift-ingress
 spec:
-  gatewayClassName: openshift-gateway-controller
+  gatewayClassName: openshift-default
   listeners:
     - allowedRoutes:
         namespaces:
@@ -12,6 +12,7 @@ spec:
       name: http
       port: 80
       protocol: HTTP
-  infrastructure:
-    labels:
-      serving.kserve.io/gateway: kserve-ingress-gateway
+      hostname: {{ printf "maas.%s" .Values.global.localClusterDomain }}
+  # infrastructure:
+  #   labels:
+  #     serving.kserve.io/gateway: kserve-ingress-gateway
