@@ -13,6 +13,3 @@ spec:
       port: 80
       protocol: HTTP
       hostname: {{ printf "maas.%s" .Values.global.localClusterDomain }}
-  # infrastructure:
-  #   labels:
-  #     serving.kserve.io/gateway: kserve-ingress-gateway
