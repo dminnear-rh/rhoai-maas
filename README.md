@@ -18,9 +18,11 @@ which is also used as a reference.
 MODEL_ADDRESS=$(oc get gateway -n openshift-ingress maas-default-gateway -o jsonpath='{.spec.listeners[0].hostname}')
 MAAS_ENDPOINT="https://$MODEL_ADDRESS/rhoai-maas-prod/granite-4-cpu"
 COMPLETIONS_ENDPOINT="$MAAS_ENDPOINT/v1/chat/completions"
+TOKEN=$(oc whoami -t)
 
-curl -k "$COMPLETIONS_ENDPOINT" \
+curl -kv "$COMPLETIONS_ENDPOINT" \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer asdf" \
   -d '{
     "messages": [{"role": "user", "content": "Hi"}],
     "max_tokens": "10"
