@@ -2,10 +2,12 @@ apiVersion: serving.kserve.io/v1alpha1
 kind: LLMInferenceService
 metadata:
   annotations:
-    alpha.maas.opendatahub.io/tiers: '[]'
+    alpha.maas.opendatahub.io/tiers: '{{ toJson .Values.maas.tiers }}'
     opendatahub.io/model-type: generative
     openshift.io/display-name: {{ .Values.name }}
-    security.opendatahub.io/enable-auth: {{ .Values.auth.enabled | quote }}
+    {{- if not .Values.auth.enabled }}
+    security.opendatahub.io/enable-auth: "false"
+    {{- end }}
   name: {{ .Values.name }}
   labels:
     opendatahub.io/dashboard: 'true'

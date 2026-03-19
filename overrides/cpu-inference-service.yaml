@@ -1,6 +1,10 @@
 name: granite-4-cpu
 model: ibm-granite/granite-4.0-1b
 
+maas:
+  tiers:
+    - premium
+
 auth:
   enabled: false
 

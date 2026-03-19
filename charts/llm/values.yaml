@@ -1,6 +1,9 @@
 name: llm-inference-service
 model: ibm-granite/granite-4.0-1b
 
+maas:
+  tiers: []
+
 auth:
   enabled: true
 
