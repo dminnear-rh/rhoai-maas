@@ -47,8 +47,8 @@ clusterGroup:
     user-management:
       name: user-management
       path: charts/user-management
-    cpu-inference-service:
-      name: cpu-inference-service
+    premium-inference-service:
+      name: premium-inference-service
       path: charts/llm
       extraValueFiles:
-        - /overrides/cpu-inference-service.yaml
+        - /overrides/premium-inference-service.yaml

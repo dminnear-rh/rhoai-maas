@@ -1,4 +1,4 @@
-name: granite-4-cpu
+name: granite-4-premium
 model: ibm-granite/granite-4.0-1b
 
 maas:
