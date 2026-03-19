@@ -10,7 +10,7 @@ maasGateway:
   namespace: openshift-ingress
   listeners:
     http:
-      enabled: true
+      enabled: false
     https:
       enabled: true
   hostname:
