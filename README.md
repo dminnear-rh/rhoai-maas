@@ -16,10 +16,10 @@ which is also used as a reference.
 
 ```bash
 MODEL_ADDRESS=$(oc get gateway -n openshift-ingress maas-default-gateway -o jsonpath='{.spec.listeners[0].hostname}')
-MAAS_ENDPOINT="https://$MODEL_ADDRESS/rhoai-maas/granite-4-cpu"
+MAAS_ENDPOINT="https://$MODEL_ADDRESS/rhoai-maas-prod/granite-4-cpu"
 COMPLETIONS_ENDPOINT="$MAAS_ENDPOINT/v1/chat/completions"
 
-curl -kX POST "$COMPLETIONS_ENDPOINT" \
+curl -k "$COMPLETIONS_ENDPOINT" \
   -H "Content-Type: application/json" \
   -d '{
     "messages": [{"role": "user", "content": "Hi"}],
