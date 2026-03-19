@@ -1,0 +1,26 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tier-to-group-mapping
+  namespace: redhat-ods-applications
+  labels:
+    app: maas-api
+    app.kubernetes.io/component: api
+    app.kubernetes.io/name: maas-api
+    app.kubernetes.io/part-of: models-as-a-service
+    app.opendatahub.io/modelsasservice: 'true'
+    component: tier-mapping
+    platform.opendatahub.io/part-of: modelsasservice
+data:
+  tiers: |
+    - name: free
+      displayName: Free Tier
+      level: 0
+      groups:
+        - system:authenticated
+
+    - name: premium
+      displayName: Premium Tier
+      level: 1
+      groups:
+        - tier-premium

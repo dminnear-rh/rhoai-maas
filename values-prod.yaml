@@ -2,7 +2,6 @@ clusterGroup:
   name: prod
 
   namespaces:
-    - rhoai-maas
     - openshift-lws-operator
     - cert-manager-operator:
         operatorGroup: true
@@ -35,7 +34,6 @@ clusterGroup:
   applications:
     rhoai-scaffolding:
       name: rhoai-scaffolding
-      namespace: rhoai-maas
       path: charts/rhoai-scaffolding
       syncPolicy:
         automated: {}
@@ -45,11 +43,12 @@ clusterGroup:
           - SkipDryRunOnMissingResource=true # OdhDashboardConfig CRD will not exists until default-dsc is installed
     networking:
       name: networking
-      namespace: rhoai-maas
       path: charts/networking
+    user-management:
+      name: user-management
+      path: charts/user-management
     cpu-inference-service:
       name: cpu-inference-service
-      namespace: rhoai-maas
       path: charts/llm
       extraValueFiles:
         - /overrides/cpu-inference-service.yaml
