@@ -11,7 +11,7 @@ metadata:
   name: {{ .Values.name }}
   labels:
     opendatahub.io/dashboard: 'true'
-    opendatahub.io/genai-asset: 'true'
+    # opendatahub.io/genai-asset: 'true'
 spec:
   model:
     name: {{ .Values.name }}
