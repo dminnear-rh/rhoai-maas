@@ -15,12 +15,12 @@ data:
   tiers: |
     - name: free
       displayName: Free Tier
-      level: 0
       groups:
         - system:authenticated
+      level: 0
 
     - name: premium
       displayName: Premium Tier
-      level: 1
       groups:
         - tier-premium
+      level: 1
