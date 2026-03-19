@@ -37,6 +37,9 @@ clusterGroup:
       name: rhoai-scaffolding
       namespace: rhoai-maas
       path: charts/rhoai-scaffolding
+      syncPolicy:
+        syncOptions:
+          - SkipDryRunOnMissingResource=true # OdhDashboardConfig CRD will not exists until default-dsc is installed
     networking:
       name: networking
       namespace: rhoai-maas
