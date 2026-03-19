@@ -1,8 +1,4 @@
-apiVersion: datasciencecluster.opendatahub.io/v2
-kind: DataScienceCluster
-metadata:
-  name: default-dsc
-spec:
+dsc:
   components:
     kserve:
       managementState: Managed
@@ -33,3 +29,8 @@ spec:
     llamastackoperator:
       managementState: Managed
     trainingoperator: {}
+
+dashboardConfig:
+  disableTracking: false
+  modelAsService: true
+  genAiStudio: true

@@ -1,0 +1,24 @@
+global:
+  localClusterDomain: apps.example.com
+
+gatewayClass:
+  name: openshift-default
+  controllerName: openshift.io/gateway-controller/v1
+
+maasGateway:
+  name: maas-default-gateway
+  namespace: openshift-ingress
+  listeners:
+    http:
+      enabled: true
+    https:
+      enabled: true
+  hostname:
+    subdomain: maas
+
+kuadrant:
+  name: default
+  namespace: kuadrant-system
+
+clusterIssuer:
+  name: selfsigned

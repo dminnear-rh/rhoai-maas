@@ -1,0 +1,31 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.maasGateway.name }}
+  namespace: {{ .Values.maasGateway.namespace }}
+spec:
+  gatewayClassName: {{ .Values.gatewayClass.name }}
+  listeners:
+    {{- if .Values.maasGateway.listeners.http.enabled }}
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+      hostname: {{ printf "%s.%s" .Values.maasGateway.hostname.subdomain .Values.global.localClusterDomain }}
+    {{- end }}
+    {{- if .Values.maasGateway.listeners.https.enabled }}
+    - name: https
+      protocol: HTTPS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      hostname: {{ printf "%s.%s" .Values.maasGateway.hostname.subdomain .Values.global.localClusterDomain }}
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: {{ printf "%s-tls" .Values.maasGateway.name }}
+            kind: Secret
+    {{- end }}

@@ -3,12 +3,11 @@ kind: OdhDashboardConfig
 metadata:
   name: odh-dashboard-config
   namespace: redhat-ods-applications
-  annotations:
 spec:
   dashboardConfig:
-    disableTracking: false
-    modelAsService: true
-    genAiStudio: true
+    {{- with .Values.dashboardConfig }}
+    {{- toYaml . | nindent 4 }}
+    {{- end}}
   hardwareProfileOrder: []
   notebookController:
     enabled: true

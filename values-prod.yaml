@@ -3,8 +3,10 @@ clusterGroup:
 
   namespaces:
     - rhoai-maas
-    - cert-manager-operator
     - openshift-lws-operator
+    - cert-manager-operator:
+        operatorGroup: true
+        targetNamespaces: []
     - redhat-ods-operator:
         operatorGroup: true
         targetNamespaces: []
@@ -31,26 +33,14 @@ clusterGroup:
       channel: stable-3.x
 
   applications:
-    dsc:
-      name: dsc
+    rhoai-scaffolding:
+      name: rhoai-scaffolding
       namespace: rhoai-maas
-      path: charts/dsc
-    gateway:
-      name: gateway
+      path: charts/rhoai-scaffolding
+    networking:
+      name: networking
       namespace: rhoai-maas
-      path: charts/gateway
-    kuadrant:
-      name: kuadrant
-      namespace: rhoai-maas
-      path: charts/kuadrant
-    odh-dashboard:
-      name: odh-dashboard
-      namespace: rhoai-maas
-      path: charts/odh-dashboard
-    lws:
-      name: lws
-      namespace: openshift-lws-operator
-      path: charts/lws
+      path: charts/networking
     cpu-inference-service:
       name: cpu-inference-service
       namespace: rhoai-maas
