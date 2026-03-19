@@ -1,7 +1,5 @@
 global:
   pattern: rhoai-maas
-  secretLoader:
-    disabled: true
 main:
   clusterGroupName: prod
   multiSourceConfig:

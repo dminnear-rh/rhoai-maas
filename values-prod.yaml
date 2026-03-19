@@ -3,6 +3,8 @@ clusterGroup:
 
   namespaces:
     - openshift-lws-operator
+    - vault
+    - golang-external-secrets
     - cert-manager-operator:
         operatorGroup: true
         targetNamespaces: []
@@ -32,6 +34,16 @@ clusterGroup:
       channel: stable-3.x
 
   applications:
+    golang-external-secrets:
+      name: golang-external-secrets
+      namespace: golang-external-secrets
+      chart: golang-external-secrets
+      chartVersion: 0.1.*
+    vault:
+      name: vault
+      namespace: vault
+      chart: hashicorp-vault
+      chartVersion: 0.1.*
     rhoai-scaffolding:
       name: rhoai-scaffolding
       path: charts/rhoai-scaffolding
