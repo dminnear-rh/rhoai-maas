@@ -1,4 +1,4 @@
 groups:
   - name: tier-premium
     users:
-      - NOTkubeadmin
+      - b64:kube:admin
