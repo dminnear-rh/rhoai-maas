@@ -11,12 +11,6 @@ which is also used as a reference.
 2. Log into an OpenShift Cluster of version `4.19.9` or later
 3. `cd` into the directory you cloned this repo into
 4. Run `./pattern.sh make install`
-5. Once everything comes online, delete `kuadrant-operator-controller-manager` pod in `kuadrant-system` as per notes below for `Kuadrant` resource to become ready.
-
-
-## Notes
-
-1. The `kuadrant-operator-controller-manager` pod in `kuadrant-system` MUST be deleted for the `Kuadrant` CR to achieve Ready status...
 
 ## Testing model
 
