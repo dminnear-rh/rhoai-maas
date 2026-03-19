@@ -55,8 +55,8 @@ runtimeContainer:
 
   resources:
     limits:
-      cpu: "8"
+      cpu: "4"
       memory: 24Gi
     requests:
-      cpu: "4"
+      cpu: "1"
       memory: 16Gi
