@@ -6,7 +6,7 @@ maas:
     - premium
 
 auth:
-  enabled: false
+  enabled: true
 
 runtimeContainer:
   image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:latest
