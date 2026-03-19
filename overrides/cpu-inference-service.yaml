@@ -54,5 +54,5 @@ runtimeContainer:
       cpu: "8"
       memory: 24Gi
     requests:
-      cpu: "8"
-      memory: 24Gi
+      cpu: "4"
+      memory: 16Gi
