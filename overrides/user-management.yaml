@@ -1,17 +1,17 @@
-idp:
-  github:
-    enabled: true
-    clientId: Ov23li5oJsFx3EfQjODG
-    organizations:
-      - validatedpatterns-sandbox
+# idp:
+#   github:
+#     enabled: true
+#     clientId: Ov23li5oJsFx3EfQjODG
+#     organizations:
+#       - validatedpatterns-sandbox
 
-  htpasswd:
-    enabled: true
-    name: htpasswd_provider
+#   htpasswd:
+#     enabled: true
+#     name: htpasswd_provider
 
-groups:
-  - name: tier-premium
-    users:
-      - admin
-    clusterRoles:
-      - cluster-reader
+# groups:
+#   - name: tier-premium
+#     users:
+#       - admin
+#     clusterRoles:
+#       - cluster-reader
