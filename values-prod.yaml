@@ -5,9 +5,7 @@ clusterGroup:
     - openshift-lws-operator
     - vault
     - golang-external-secrets
-    - cert-manager-operator:
-        operatorGroup: true
-        targetNamespaces: []
+    - cert-manager-operator
     - redhat-ods-operator:
         operatorGroup: true
         targetNamespaces: []
