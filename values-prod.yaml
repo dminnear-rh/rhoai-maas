@@ -27,7 +27,6 @@ clusterGroup:
     connectivity-link:
       name: rhcl-operator
       namespace: kuadrant-system
-      csv: rhcl-operator.v1.2.1
     rhoai:
       name: rhods-operator
       namespace: redhat-ods-operator
