@@ -23,6 +23,7 @@ spec:
       property: client_secret
 ---
 {{- end }}
+
 {{- if .Values.idp.htpasswd.enabled }}
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -48,6 +49,12 @@ spec:
       property: htpasswd_file
 ---
 {{- end }}
+
+{{- $idpEnabled := false -}}
+{{- range $key, $val := .Values.idp -}}
+  {{- if $val.enabled }}{{ $idpEnabled = true }}{{ end -}}
+{{- end -}}
+{{- if $idpEnabled }}
 apiVersion: config.openshift.io/v1
 kind: OAuth
 metadata:
@@ -79,3 +86,4 @@ spec:
         fileData:
           name: htpasswd-secret
   {{- end }}
+{{- end -}}

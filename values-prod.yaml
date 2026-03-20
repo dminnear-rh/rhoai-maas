@@ -58,6 +58,8 @@ clusterGroup:
     user-management:
       name: user-management
       path: charts/user-management
+      extraValueFiles:
+        - /overrides/user-management.yaml
     premium-inference-service:
       name: premium-inference-service
       path: charts/llm

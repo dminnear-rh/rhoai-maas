@@ -2,20 +2,17 @@ idp:
   # You must setup the OAuth App on GitHub outside of this pattern.
   # See: https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/authentication_and_authorization/configuring-identity-providers#identity-provider-registering-github_configuring-github-identity-provider
   github:
-    enabled: true
+    enabled: false
     # this name MUST match the one used in the callback URL of the OAuth App on GitHub
     name: github
-    clientId: Ov23li5oJsFx3EfQjODG
-    organizations:
-      - validatedpatterns-sandbox
+    clientId: ""
+    organizations: []
     teams: []
 
   htpasswd:
-    enabled: true
+    enabled: false
     name: htpasswd_provider
 
 groups:
   - name: tier-premium
-    users:
-      - b64:kube:admin
-      - dminnear-rh
+    users: []

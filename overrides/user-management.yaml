@@ -1,0 +1,16 @@
+idp:
+  github:
+    enabled: true
+    clientId: Ov23li5oJsFx3EfQjODG
+    organizations:
+      - validatedpatterns-sandbox
+
+  htpasswd:
+    enabled: true
+    name: htpasswd_provider
+
+groups:
+  - name: tier-premium
+    users:
+      - admin
+      - dminnear-rh

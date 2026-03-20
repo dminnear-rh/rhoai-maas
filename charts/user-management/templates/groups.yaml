@@ -3,9 +3,13 @@ apiVersion: user.openshift.io/v1
 kind: Group
 metadata:
   name: {{ .name }}
+{{- if .users }}
 users:
-  {{- range .users }}
+{{- range .users }}
   - {{ . | quote }}
-  {{- end }}
+{{- end }}
+{{- else }}
+users: []
+{{- end }}
 ---
 {{- end }}
