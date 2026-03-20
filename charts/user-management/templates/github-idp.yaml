@@ -22,25 +22,60 @@ spec:
       key: secret/data/hub/gh-oauth
       property: client_secret
 ---
+{{- end }}
+{{- if .Values.idp.htpasswd.enabled }}
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: htpasswd-external-secret
+  namespace: openshift-config
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: htpasswd-secret
+    template:
+      type: Opaque
+      engineVersion: v2
+      data:
+        htpasswd: "{{ `{{ .htpasswd_file }}` }}"
+  data:
+  - secretKey: htpasswd_file
+    remoteRef:
+      key: secret/data/hub/gh-oauth
+      property: htpasswd_file
+---
+{{- end }}
 apiVersion: config.openshift.io/v1
 kind: OAuth
 metadata:
   name: cluster
 spec:
   identityProviders:
-  - name: {{ .Values.idp.github.name }}
-    mappingMethod: claim
-    type: GitHub
-    github:
-      clientID: {{ .Values.idp.github.clientId }}
-      clientSecret:
-        name: github-secret
-      {{- with .Values.idp.github.organizations }}
-      organizations:
-        {{- toYaml . | nindent 8}}
-      {{- end }}
-      {{- with .Values.idp.github.teams }}
-      teams:
-        {{- toYaml . | nindent 8}}
-      {{- end }}
-{{- end }}
+  {{- if .Values.idp.github.enabled }}
+    - name: {{ .Values.idp.github.name }}
+      mappingMethod: claim
+      type: GitHub
+      github:
+        clientID: {{ .Values.idp.github.clientId }}
+        clientSecret:
+          name: github-secret
+        {{- with .Values.idp.github.organizations }}
+        organizations:
+          {{- toYaml . | nindent 8}}
+        {{- end }}
+        {{- with .Values.idp.github.teams }}
+        teams:
+          {{- toYaml . | nindent 8}}
+        {{- end }}
+  {{- end }}
+  {{- if .Values.idp.htpasswd.enabled }}
+    - name: {{ .Values.idp.htpasswd.name }}
+      mappingMethod: claim
+      type: HTPasswd
+      htpasswd:
+        fileData:
+          name: htpasswd-secret
+  {{- end }}

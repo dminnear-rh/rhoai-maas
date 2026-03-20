@@ -10,6 +10,10 @@ idp:
       - validatedpatterns-sandbox
     teams: []
 
+  htpasswd:
+    enabled: true
+    name: htpasswd_provider
+
 groups:
   - name: tier-premium
     users:
