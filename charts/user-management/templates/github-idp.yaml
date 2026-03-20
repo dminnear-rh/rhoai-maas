@@ -44,7 +44,7 @@ spec:
   data:
   - secretKey: htpasswd_file
     remoteRef:
-      key: secret/data/hub/gh-oauth
+      key: secret/data/hub/htpasswd
       property: htpasswd_file
 ---
 {{- end }}
