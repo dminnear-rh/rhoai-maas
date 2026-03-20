@@ -13,9 +13,5 @@ groups:
   - name: tier-premium
     users:
       - admin
-      - dminnear-rh
     clusterRoles:
       - cluster-reader
-  - name: rhods-admins
-    users:
-      - dminnear-rh
